@@ -53,10 +53,11 @@ function addNewChat() {
   }
 }
 
-setTimeout(() => {
-  const listItemObserver = new MutationObserver(() => {
-    addNewChat();
-  });
+const listItemObserver = new MutationObserver(addNewChat);
+const observer = new MutationObserver(() => {
   const listItemEl = document.querySelector('#pane-side');
-  listItemObserver.observe(listItemEl, { childList: true, subtree: true });
-}, 5000);
+  if ( listItemEl ) {
+    listItemObserver.observe(listItemEl, { childList: true, subtree: true });
+  }
+});
+observer.observe(document.body, { childList: true, subtree: true });
