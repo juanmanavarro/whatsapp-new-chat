@@ -36,25 +36,26 @@ function addNewChat() {
     newChatEl.remove();
   }
 
-  if ( phoneNumber.match(/^\d+$/) ) {
-    const side = document.querySelector('#side');
-    if ( !side ) return;
+  const a = document.querySelector('[aria-rowcount]');
+  if ( !a?.attributes['aria-rowcount'].value ) {
+    if ( phoneNumber.match(/^\d+$/) ) {
+      const side = document.getElementById('side');
+      if ( !side ) return;
 
-    if ( !newChatEl ) {
-      side.insertAdjacentHTML('afterbegin', newChatHtml(phoneNumber));
-    } else {
-      newChatEl.outerHTML = newChatHtml(phoneNumber);
+      if ( !newChatEl ) {
+        side.insertAdjacentHTML('afterbegin', newChatHtml(phoneNumber));
+      } else {
+        newChatEl.outerHTML = newChatHtml(phoneNumber);
+      }
     }
+  } else {
+    newChatEl.remove();
   }
 }
 
 setTimeout(() => {
-  const listItemObserver = new MutationObserver((mutations) => {
-    const a = document.querySelector('[aria-rowcount]');
-    if ( !a?.attributes['aria-rowcount'].value ) {
-      console.log('show');
-      addNewChat()
-    }
+  const listItemObserver = new MutationObserver(() => {
+    addNewChat();
   });
   const listItemEl = document.querySelector('#pane-side');
   listItemObserver.observe(listItemEl, { childList: true, subtree: true });
