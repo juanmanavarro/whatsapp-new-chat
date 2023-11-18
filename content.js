@@ -15,6 +15,7 @@ const newChatHtml = (phone) => {
       target="_blank"
       rel="noopener noreferrer"
       class="selectable-text copyable-text"
+      style="color:#ff9900"
     >+${phone}</a>
     <p style="display: flex;
     align-items: center;
