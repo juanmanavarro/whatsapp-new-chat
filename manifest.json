@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "ChatFinder for WhatsApp",
+    "version": "1.0",
+    "description": "Una extensión que funciona solo en WhatsApp Web.",
+    "permissions": [
+        "tabs", "scripting"
+    ],
+    "host_permissions": [
+        "https://web.whatsapp.com/*"
+    ],
+    "action": {
+        "default_icon": {
+            "128": "icon128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://web.whatsapp.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "icons": {
+        "128": "icon128.png"
+    }
+}
