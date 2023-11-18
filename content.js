@@ -27,31 +27,35 @@ const newChatHtml = (phone) => {
 `
 };
 
-function checkForPhoneNumber(mutationRecords) {
-  const textMutation = mutationRecords.find(m => m.type === 'characterData');
-  if ( !textMutation ) return;
+function addNewChat() {
+  const newChatEl = document.getElementById('new-chat');
+  const searchEl = document.querySelector('[data-lexical-editor="true"]');
+  const phoneNumber = searchEl.textContent;
 
-  const phoneNumber = textMutation.target.textContent;
+  if ( !phoneNumber && newChatEl ) {
+    newChatEl.remove();
+  }
+
   if ( phoneNumber.match(/^\d+$/) ) {
-    const pane = document.querySelector('#pane-side');
-    if ( !pane ) return;
-    const searchResult = pane.querySelector('[role="listitem"]:not(#new-chat)');
-    const newChatEl = document.getElementById('new-chat');
-    if ( !searchResult ) {
-      if ( !newChatEl ) {
-        pane.insertAdjacentHTML('afterbegin', newChatHtml(phoneNumber));
-      } else {
-        newChatEl.outerHTML = newChatHtml(phoneNumber);
-      }
+    const side = document.querySelector('#side');
+    if ( !side ) return;
+
+    if ( !newChatEl ) {
+      side.insertAdjacentHTML('afterbegin', newChatHtml(phoneNumber));
     } else {
-      if ( newChatEl ) newChatEl.remove();
+      newChatEl.outerHTML = newChatHtml(phoneNumber);
     }
   }
 }
 
-// millorar aço
 setTimeout(() => {
-  const observer = new MutationObserver(checkForPhoneNumber);
-  const el = document.querySelector('[data-lexical-editor="true"]');
-  observer.observe(el, { childList: true, subtree: true, characterData: true });
+  const listItemObserver = new MutationObserver((mutations) => {
+    const a = document.querySelector('[aria-rowcount]');
+    if ( !a?.attributes['aria-rowcount'].value ) {
+      console.log('show');
+      addNewChat()
+    }
+  });
+  const listItemEl = document.querySelector('#pane-side');
+  listItemObserver.observe(listItemEl, { childList: true, subtree: true });
 }, 5000);
