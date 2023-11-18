@@ -14,8 +14,8 @@ const newChatHtml = (phone) => {
       title="${waLink}"
       target="_blank"
       rel="noopener noreferrer"
-      class="_11JPr selectable-text copyable-text"
-    >${phone}</a>
+      class="selectable-text copyable-text"
+    >+${phone}</a>
     <p style="display: flex;
     align-items: center;
     min-height: 20px;
@@ -39,17 +39,17 @@ function addNewChat() {
   const a = document.querySelector('[aria-rowcount]');
   if ( !a?.attributes['aria-rowcount'].value ) {
     if ( phoneNumber.match(/^\d+$/) ) {
-      const side = document.getElementById('side');
+      const side = document.getElementById('side').firstChild;
       if ( !side ) return;
 
       if ( !newChatEl ) {
-        side.insertAdjacentHTML('afterbegin', newChatHtml(phoneNumber));
+        side.insertAdjacentHTML('afterend', newChatHtml(phoneNumber));
       } else {
         newChatEl.outerHTML = newChatHtml(phoneNumber);
       }
     }
   } else {
-    newChatEl.remove();
+    if ( newChatEl ) newChatEl.remove();
   }
 }
 
