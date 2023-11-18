@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "WhatsApp NewChat",
+    "name": "WhatsApp New Chat",
     "version": "1.0",
-    "description": "Una extensión que funciona solo en WhatsApp Web.",
+    "description": "Start a new chat in WhatsApp",
     "permissions": [
         "tabs", "scripting"
     ],
