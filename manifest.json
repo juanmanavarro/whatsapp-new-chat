@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "ChatFinder for WhatsApp",
+    "name": "WhatsApp NewChat",
     "version": "1.0",
     "description": "Una extensión que funciona solo en WhatsApp Web.",
     "permissions": [
