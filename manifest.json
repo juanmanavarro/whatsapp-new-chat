@@ -16,5 +16,9 @@
     ],
     "icons": {
         "128": "icon128.png"
-    }
+    },
+    "web_accessible_resources": [{
+        "matches": ["<all_urls>"],
+        "resources": ["avatar.webp"]
+    }]
 }
