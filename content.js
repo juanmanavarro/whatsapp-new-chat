@@ -32,7 +32,7 @@ const newChatHtml = (phone) => {
       "
     >
       <p>New chat</p>
-      <p>by <a href="https://juanmanavar.ro" target="_blank">jnvr.ro</a>
+      <p><a href="https://coindrop.to/juanmanavarro" target="_blank">tip</a>
     </div>
   </div>
 </div>
