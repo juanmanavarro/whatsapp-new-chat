@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "WhatsApp New Chat",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Start a new chat in WhatsApp",
     "action": {
         "default_icon": {
@@ -20,5 +20,12 @@
     "web_accessible_resources": [{
         "matches": ["<all_urls>"],
         "resources": ["avatar.webp"]
-    }]
+    }],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "contextMenus",
+        "tabs"
+    ]
 }
