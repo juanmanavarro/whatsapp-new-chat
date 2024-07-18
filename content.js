@@ -1,5 +1,5 @@
 const newChatHtml = (phone) => {
-  const waLink = `https://wa.me/${phone}`;
+  const waLink = `https://wa.me/${phone.replace(/\s/g, '')}`;
   const imgSrc = chrome.runtime.getURL('avatar.webp');
   return `
 <div
@@ -42,7 +42,7 @@ const newChatHtml = (phone) => {
 function addNewChat() {
   const newChatEl = document.getElementById('new-chat');
   const searchEl = document.querySelector('[data-lexical-editor="true"]');
-  const phoneNumber = searchEl.textContent;
+  const phoneNumber = searchEl.textContent.trim();
 
   if ( !phoneNumber && newChatEl ) {
     newChatEl.remove();
@@ -50,7 +50,7 @@ function addNewChat() {
 
   const a = document.querySelector('[aria-rowcount]');
   if ( !a?.attributes['aria-rowcount'].value ) {
-    if ( phoneNumber.match(/^\d+$/) ) {
+    if ( phoneNumber.match(/^\d[\d\s]*\d$/) ) {
       const side = document.getElementById('side').firstChild;
       if ( !side ) return;
 
