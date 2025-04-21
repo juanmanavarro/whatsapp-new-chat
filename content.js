@@ -32,7 +32,6 @@ const newChatHtml = (phone) => {
       "
     >
       <p>New chat</p>
-      <p><a href="https://coindrop.to/juanmanavarro" target="_blank">tip</a>
     </div>
   </div>
 </div>
