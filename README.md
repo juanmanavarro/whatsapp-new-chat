@@ -49,4 +49,6 @@ Reach out to us at: **[hola@juanmanavar.ro](mailto:hola@juanmanavar.ro)**
 
 **Pull requests are welcome!** If you have ideas for improvements or new features, feel free to contribute.
 
+**This project is licensed under the [MIT License](LICENSE).**
+
 **Simplify your messaging experience with WhatsApp New Chat.**
